@@ -1,0 +1,45 @@
+{
+  "no": 1,
+  "firstName": "Taro",
+  "lastName": "Tanaka",
+  "age": "15",
+  "body": {
+    "height":165 ,"weight":60
+  },
+  "grades": [
+    { "semester":"first", "grade":"90" },
+    { "semester":"second", "grade":"80" }
+  ],
+  "insertDate":"",
+ }
+
+
+ {
+   "no": 2,
+   "firstName": "Taro",
+   "lastName": "Takeda",
+   "age": "16",
+   "body": {
+     "height":150 ,"weight":55
+   },
+   "grades": [
+     { "semester":"first", "grade":"90" },
+     { "semester":"second", "grade":"70" }
+   ],
+   "insertDate":"",
+  }
+
+  {
+    "no": 3,
+    "firstName": "Jiro",
+    "lastName": "Suzuki",
+    "age": "15",
+    "body": {
+      "height":170 ,"weight":65
+    },
+    "grades": [
+      { "semester":"first", "grade":"60" },
+      { "semester":"second", "grade":"80" }
+    ],
+    "insertDate":"",
+   }
