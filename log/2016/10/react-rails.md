@@ -19,6 +19,40 @@ React.jsとRailsを個別で学習しており、そろそろ二つを合わせ�
 ### デメリット
 - React以外のnpmライブラリは自分でなんとかする必要がある
 
+### 実装方法
+react-railsを追加する
+```
+$ vi Gemfile
+# ...省略
+gem 'react-rails', '~> 1.0' # 追加する
+
+$ bundle install
+```
+reactを使えるようによしなにやってくれるgeneratorが用意されているのでそれを利用する
+```
+$ rails g react:install
+```
+
+react-railsにはComponent定義を生成してくれるgeneratorがある。これを叩いて最初のComponentを作る。
+下記の例では、app/assets/javascripts/components/comment_box.js.jsxというファイルができるので、そこにreactのコードをがしがし書いていく。
+```
+rails g react:component CommentBox
+```
+
+コントローラーの作成
+```
+$ rails g controller comments
+```
+
+railsのviewからreactを呼び出す
+```　app/views/comments/index.html.erb
+<%= react_component('CommentBox') %>
+```
+
+```config/routes.rb
+root 'comments#index'
+```
+
 ## 2.Railsプロジェクトの中にReactのフロントエンドアプリを入れる
 ### 概要
 - webpackなどを利用する(ツールなどは下記に詳細を記述する)
