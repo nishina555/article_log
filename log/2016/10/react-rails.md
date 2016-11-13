@@ -85,7 +85,7 @@ JSビルドツールのこと。フロントエンドのJSファイルを生成�
 - コード分割できる
 - pluginによる拡張できる
 - Loaderという仕組みがあり、ソースコードに適用する処理を柔軟に設定できる
-- babel-loaderを使うことでes2015やJSxで記述したJSファイルを変換することができる。babelはJSXファイルをコンパイルするもの。
+- babel-loaderを使うことでes2015やJSxで記述したJSファイルを変換することができる。babelはJSXファイルをコンパイルするもの。(reactのチュートリアルのコードも<script type="text/babel">で囲まれていた)
 - ビルドやコードの配置まではwebpack, ファイルへのフィンガープリントはSprocketsに任せるという運用
 - 機能がたくさんあるので、gulpなどを使わなくても設定ファイルを変更するだけで大体のことは実現できる。
 ### Browserify
@@ -125,3 +125,7 @@ http://qiita.com/derui@github/items/5233b4ef8fbde1e80d33
 http://qiita.com/takayukishmz@github/items/2498ef5eb2de7fa28658
 http://qiita.com/kmszk/items/45fb4690ace32216ca25
 http://qiita.com/cognitom/items/db88babebeb869a4a198
+
+## その他
+- reactのチュートリルはjsファイルに書いてコンパイルとかしなかったけど、そもそもreactのソースは<script type="text/babel">で囲まれてたから、その中でよろしくjsxをjsファイルに変換してくれてたみたい。babelと書く前はjsxって書いてたらしい。
+- react-railsはjsxファイルをコンパイルしてjsにするものだとおもう。webpackを入れるとreactの中でnpmのモジュール使える。railsはjsx呼ぶ。で、そのjsxにはnpmとかのモジュールがあるからwebpackとかも使ってコンパイルしてサーバサイドレンダリング（サーバーサイドでHTML形式にしてフロントに返却してフロントはサーバーで変換されたやつをただ表示させるだけ）を実装しているんだと思われる。
