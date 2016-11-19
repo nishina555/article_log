@@ -21,7 +21,7 @@ $ bundle list
 
 ## テーブルの作成
 
-1対多のテーブルを作るときは、多側にXXXX_idという外部キーを作成する
+1対多のテーブルを作るときは、多側(子供)にXXXX_idという外部キーを作成する
 http://ruby-rails.hatenadiary.com/entry/20141203/1417601540
 
 ```
@@ -167,6 +167,8 @@ rake db:rollback
 ```
 
 db migrateを整理して、0の状態からmigrateしなおしたい(作成したテーブルもなくなる)
+つまり、データベースを削除->データベース作成->テストデータ挿入
+Rilas5の場合、rakeじゃなくてrailsコマンドでもいける
 ```
 rake db:migrate VERSION=0
 rake db:migrate

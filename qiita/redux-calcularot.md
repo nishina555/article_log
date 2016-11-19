@@ -1,3 +1,7 @@
+# はじめに
+
+もし、React.jsやReduxについて基本的な知識を学習したい場合は
+電卓アプリで学ぶReact/Redux入門(基礎知識編)をお読みください。
 
 # 準備
 ## create-react-appが入っていない場合
@@ -45,6 +49,7 @@ npm install
 ```
 
 # アプリの構成について
+以下のようなアプリを作成します。
 
 ```
 cd src
@@ -74,13 +79,34 @@ tree -L 2
 
 
 ## actions
+- 状態を変えるためのリクエスト部分
+- dispatcher(後述)を通じてviewを変更する
+- ただのオブジェクト
+- 数字を足したい
 
 ## components
+-
 
 ## containers
+- Reduxで管理された状態と直接繋がるComponent
+- storeの状態を読めてActionをdispatchできる
+- 基本的に一番外にいる
 
 ## reducers
+- actionに基づいて、新しい状態を返す
+-
 
+
+
+## dispather
+- サーバー
+- actionを受けて、reducerを通じて、storeを変更する
+- 実装するものは特にない
+
+## store
+- データベース
+- storeが同じならviewも同じ
+- storeをどうやって作るか、storeからviewをどうやって作るかがReactアプリのミソ
 
 
 # モックの作成

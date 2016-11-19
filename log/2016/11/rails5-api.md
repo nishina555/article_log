@@ -1,13 +1,17 @@
 ## 手順
 
+### モデルの作成
+
 ```
 $ rails new rails-api --api(rails new アプリ名 -B --api)
+$ rails new rails-api-scatfold --api
 ```
 
 ```
-$ rails g scaffold Foo name:string age:integer
+$ rails g scaffold events title:string body:text
 ```
 もしくは
+
 ```
 $ rails g model Event title:string body:text
 $ rails g model Comment event_id:integer body:text
@@ -19,37 +23,39 @@ $ rake db:migrate (rails db:migrate)
 Rails5からrakeコマンドがrailsに統合されたのでご注意を。
 
 
-```UserController.rb
+seedデータの作成
+```db/seeds.rb
+モデルクラス名.create(:カラム名1 => 値1, :カラム名2 => 値2, ...)
+Event.create({title: 'event1 title', body: 'this is the body of event1'})
 
-class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
-
-  # GET /users
-  def index
-    @users = User.all
-
-    render json: @users
-  end
-
-  # GET /users/1
-  def show
-    render json: @user
-  end
-
-  #・・・略
-end
+$ rake db:seed
 ```
 
+```
+$ rails s
+```
 
+### 1:多のモデルを作成
+
+
+
+rails g scaffold Post
+rails g scaffold Comment post:references
 
 
 ## 参考資料
 http://morizyun.github.io/blog/rails-api-5.0.0.beta.2/
-http://www.slideshare.net/fumiyasakai37/rails5api
 http://hkdnet.hatenablog.com/entry/2016/05/22/141553
-https://www.hommax39.com/archives/170
 http://uraway.hatenablog.com/entry/2016/07/11/090206
-https://www.school.ctc-g.co.jp/columns/masuidrive/masuidrive29.html
+- slide
+  - http://www.slideshare.net/fumiyasakai37/rails5api
+- scaffoldにて作成
+  - https://www.hommax39.com/archives/170
+  - http://qiita.com/master-of-sugar/items/7f76bed026e64ec1cceb
+  - https://www.school.ctc-g.co.jp/columns/masuidrive/masuidrive29.html
+- shallowってのがあるらしい
+  - http://qiita.com/kuboon/items/96bbd227f9497ed81f38
+
 
 ## 認証機能付きAPI用のgem
 doorkeeper
@@ -121,3 +127,6 @@ http://dev.classmethod.jp/server-side/ruby-on-rails/ruby-on-rails_sorcery_auth_n
   - viewがほしくなったらどうする
   - CORS
   - ユーザー認証
+    - RailsApiではcookiesとかsessionがなくなってる-> cookieではなくtokenで管理する
+    - 認証処理自体はOAuth2で行って、そのあとにトークンを生成する
+    - googleを使わないでOAuthするなら、　　doorkeeper
